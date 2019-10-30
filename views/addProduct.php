@@ -27,9 +27,9 @@ include("../auth.php");
 	$msg = "";
 	if (isset($_POST['submit'])) {
 		$username = $_SESSION['username'];
-		$productName = $_POST['productName']; 
-		$productBrand = $_POST['productBrand']; 
-		$productDesc = $_POST['productDesc']; 
+		$productName = mysqli_real_escape_string($con, $_POST['productName']);
+		$productBrand = mysqli_real_escape_string($con, $_POST['productBrand']);
+		$productDesc = mysqli_real_escape_string($con, $_POST['productDesc']);
 		$category = $_POST['categoryList']; 
 		$quantity = $_POST['quantity'];
 		$cost = $_POST['cost']; 	
