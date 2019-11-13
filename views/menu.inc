@@ -73,7 +73,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-small">
                   <a class="dropdown-item " href="createService.php">Create Service</a>
-                  <a class="dropdown-item " href="manageServices">Manage Services</a>
+                  <a class="dropdown-item " href="manageServices.php">Manage Services</a>
                 </div>
               </li>
 			   <li class="nav-item dropdown">
