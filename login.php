@@ -10,7 +10,7 @@
 <?php
 
 require('db.php');
-use Aws\DynamoDb\SessionHandler;
+use aws\Aws\DynamoDb\SessionHandler;
 
 $sessionHandler = SessionHandler::fromClient($dynamoDb, [
     'table_name' => 'sessions'
