@@ -9,17 +9,18 @@
 <body>
 <?php
 require('db.php');
-require 'vendor/autoload.php';
+require_once 'AWSSDKforPHP/sdk.class.php';
 
-use Aws\DynamoDb\DynamoDbClient;
+// Instantiate the Amazon DynamoDB client.
+// REMEMBER: You need to set 'defaultcacheconfig' in your config.inc.php.
+$dynamodb = new AmazonDynamoDB();
 
-$dynamoDb = DynamoDbClient::factory(array('region' => '<region name>'));
-
-$sessionHandler = $dynamoDb->registerSessionHandler(array(
-    'table_name' => 'sessions'
+// Register the DynamoDB Session Handler.
+$handler = $dynamodb->registersessionhandler(array(
+    'tablename' => 'my-sessions-table'
 ));
 
-$sessionHandler->createSessionsTable(5, 5);
+$handler->create_sessions_table();
 
 session_start();
 if (isset($_POST['username'])){
