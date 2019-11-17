@@ -17,7 +17,7 @@ $dynamodb = new AmazonDynamoDB();
 
 // Register the DynamoDB Session Handler.
 $handler->create_sessions_table();
-));
+
 session_start();
 if (isset($_POST['username'])){
 	$username = stripslashes($_REQUEST['username']);
