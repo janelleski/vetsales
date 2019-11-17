@@ -9,8 +9,15 @@
 <body>
 <?php
 require('db.php');
-$dir = sys_get_temp_dir();
-session_save_path($dir);
+require_once 'AWSSDKforPHP/sdk.class.php';
+
+// Instantiate the Amazon DynamoDB client.
+// REMEMBER: You need to set 'defaultcacheconfig' in your config.inc.php.
+$dynamodb = new AmazonDynamoDB();
+
+// Register the DynamoDB Session Handler.
+$handler->create_sessions_table();
+));
 session_start();
 if (isset($_POST['username'])){
 	$username = stripslashes($_REQUEST['username']);
