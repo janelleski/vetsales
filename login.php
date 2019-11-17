@@ -8,7 +8,7 @@
 </head>
 <body>
 <?php
-require 'aws/aws-autoloader.php';
+require ('aws/aws-autoloader.php');
 require('db.php');
 use Aws\DynamoDb\SessionHandler;
 
