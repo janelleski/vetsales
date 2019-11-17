@@ -8,9 +8,9 @@
 </head>
 <body>
 <?php
-
+require '/aws/aws-autoloader.php';
 require('db.php');
-use aws\Aws\DynamoDb\SessionHandler;
+use Aws\DynamoDb\SessionHandler;
 
 $sessionHandler = SessionHandler::fromClient($dynamoDb, [
     'table_name' => 'sessions'
