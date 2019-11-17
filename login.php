@@ -8,19 +8,15 @@
 </head>
 <body>
 <?php
+require '/aws/aws-autoloader.php';
 require('db.php');
-require_once 'AWSSDKforPHP/sdk.class.php';
+use Aws\DynamoDb\SessionHandler;
 
-// Instantiate the Amazon DynamoDB client.
-// REMEMBER: You need to set 'defaultcacheconfig' in your config.inc.php.
-$dynamodb = new AmazonDynamoDB();
+$sessionHandler = SessionHandler::fromClient($dynamoDb, [
+    'table_name' => 'sessions'
+]);
 
-// Register the DynamoDB Session Handler.
-$handler = $dynamodb->registersessionhandler(array(
-    'tablename' => 'my-sessions-table'
-));
-
-$handler->create_sessions_table();
+$sessionHandler->register();
 
 session_start();
 if (isset($_POST['username'])){
